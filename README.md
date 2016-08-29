@@ -70,6 +70,5 @@ ghost images, laptops, and printers.
 - Reorganized physical media collection.
 
 ###Education
-- M.S. OF COMPUTER SCIENCE | EXPECTED COMPLETION 2017 | UNIVERSITY OF TENNESSEE
 - B.A. IN EAST ASIAN LANG/LIT | MAY 2007 | UNIVERSITY OF FLORIDA
 - STUDY ABROAD | JUNE – AUGUST 2006 | RUSSIAN STATE UNIVERSITY
