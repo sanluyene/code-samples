@@ -15,9 +15,11 @@ extraordinary track record.
 
 ######OTHER SOFTWARE
 - Microsoft Visual Studio, Microsoft SQL Server
+- Jira, GitHub, SourceTree
 - Adobe Creative Suite (Photoshop, Illustrator, Edge, Flash)
 - Eclipse, Android Studio
 - PuTTY, Oracle VirtualBox
+- Slack, Skype, Hangouts
 
 ######RECOGNITION AND CERTIFICATIONS
 - ServiceNow Knowledge16 Hack-a-Thon winner
