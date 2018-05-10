@@ -30,7 +30,9 @@ extraordinary track record.
 
 ###Relevant Experience
 ######INFORMATION INTERNATIONAL ASSOCIATES
-- **State Reporting System for the Institute of Museum and Library Sciences** – Developing a .Net (C#) web
+- ** ServiceNow Loaner Reservation Module for Oak Ridge National Lab ** - Scoped Application built within ServiceNow Studio to provide support for IT staff to manage loaner laptops and mobile phones. Migrated from hand-written whiteboard note system, to fully integrate with Request-based workflow. Application operates as a conference room reservation, but for laptop and mobile devices. Devices are not able to be double-booked, and all active reservations are plainly visible via a calendar to allow for quick viewing of what is currently deployed. Module includes separate data tables, ACLs, and client- and server-side scripts.
+- ** ServiceNow Reporting and Performance Analytics for Oak Ridge National Lab ** - Custom indicators and breakdowns created within Performance Analytics to capture specific data not included in default implementation of ServiceNow, including for custom modules like the Loaner Reservation application. Strong emphasis placed upon Assignment Groups and individuals, breaching of Incidents, and relations between application-specific Change Requests and Incidents and Requests occuring shortly thereafter. Extensive customization of Dashboards, Homepages, and associated Widgets and Gauges.
+- **State Reporting System for the Institute of Museum and Library Sciences** – Developed a .Net (C#) web
 conditionally branching system for users including IMLS staff, and SLAAs across the 50 states plus
 territories to enter state library project information.
 - **Analysis Center Document Repository for DOD HDIAC** – Built .Net (C#) web application for users to
