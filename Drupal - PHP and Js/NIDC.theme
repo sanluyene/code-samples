@@ -1,0 +1,24 @@
+<?php
+
+/* 
+  Drupal .theme file for National Isotope Development Center (partial)
+  Authored by: Ashley Pressley
+  Updated: 05/03/2018
+  Description: Theme preprocess for hiding Commerce module pricing
+    from role-based users
+*/
+
+/* \Drupal::logger('nidc_theme')->notice(); */
+function nidc_views_pre_render(&$view) {
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  $vName = $view->id();
+  
+  if (!($user->hasRole('preferred_customer'))) {
+    foreach ($view->field as $key => $value) {
+      if ($key == 'total_price__number') {
+        $value->options['exclude'] = TRUE;
+        unset($view->field['total_price__number']);
+      }
+    }
+  }
+}

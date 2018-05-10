@@ -1,8 +1,12 @@
 <?php
-/**
- * Author: Ashley Sattler
- * Description: Simplenews Content Selection Drupal module template for a news feed.
- */
+
+/* 
+  Drupal 7 Template file
+  Authored by: Ashley Pressley
+  Updated: 05/03/2018
+  Description: Simplenews Content Selection module template for a news feed
+*/
+
 ?>
 <div id="newsletter" class="clearfix">
   <?php 
