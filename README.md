@@ -5,6 +5,7 @@
 - Accomplished and agile learner; capable of rapidly getting up-to-speed on new and existing technologies to provide a **perfected work product**.
 
 ###Skills & Abilities
+
 ######WEB APPLICATION DEVELOPMENT
 - .Net (C#), Angular
 - MSSQL, SQL
@@ -26,6 +27,7 @@
 -	CompTIA Network+ and A+
 
 ###Professional Experience
+
 ######Publicly Accessible Work and Code References
 - [Pseudopotential Library Website](https://pseudopotentiallibrary.org/) 
 - [Columbia University Library Synchronizer Module GitHub Pages Preview](https://cul.github.io/synchronizer-module/)
