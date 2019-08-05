@@ -28,12 +28,6 @@
 
 ### Professional Experience
 
-###### Publicly Accessible Work and Code References
-- [Pseudopotential Library Website](https://pseudopotentiallibrary.org/) 
-- [Columbia University Library Synchronizer Module GitHub Pages Preview](https://cul.github.io/synchronizer-module/)
-- [Institute of Museum and Library Sciences State Project Reporting (public)](https://imls-spr.imls.gov/Public/Projects) 
-- [Center for Bioenergy Innovation](https://cbi.ornl.gov/)
-
 ###### SOLUTIONS ARCHITECT | PHARICODE, LLC. | JUNE 2018 – CURRENT
 -	**ServiceNow Custom Financial and Human Resource Tracking Portal Application for Johnson&Johnson** - Built custom Service Portal modeling widgets for tracking and trending financial data for a worldwide company managing thousands of employees across multiple regions. Included advanced JavaScript uniquely tailored to the company’s fiscal analytics, while leveraging a strategic table structure to allow for easy modifications or alternative economic functions to be utilized for future growth or other companies. 
 -	**YubiKey Registration Site for ServiceNow** - PHP-based U2F registration application built to support the utilization of Yubico multi-factor authentication devices for ServiceNow. Integrated into the ServiceNow platform through an interchange of Rest API calls, facilitating the exchange of user and certificate data. Included pure HTML and CSS mimicking of a fully-branded ServiceNow portal for a seamless user experience. 
@@ -72,6 +66,12 @@ ghost images, laptops, and printers.
 ###### REGISTRAR INTERN | THE HARN MUSEUM OF ART | MAY – AUGUST 2007
 - Administered the master museum database.
 - Reorganized physical media collection.
+
+###### Publicly Accessible Work and Code References
+- [Pseudopotential Library Website](https://pseudopotentiallibrary.org/) 
+- [Columbia University Library Synchronizer Module GitHub Pages Preview](https://cul.github.io/synchronizer-module/)
+- [Institute of Museum and Library Sciences State Project Reporting (public)](https://imls-spr.imls.gov/Public/Projects) 
+- [Center for Bioenergy Innovation](https://cbi.ornl.gov/)
 
 ### Education
 **University of Florida** - B.A. in East Asian Languages and Literatures, with a focus on Linguistics (2007)
