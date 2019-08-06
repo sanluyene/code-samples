@@ -1,0 +1,273 @@
+<!-- 
+  Portal Widget HTML
+  Authored by: Ashley Pressley
+  Updated: 07/31/2019
+  Description: Utilizes AngularJS to dynamically build displays
+    and interactive buttons for procurement listings of both
+    software and hardware requests in ServiceNow.
+-->
+
+<div class="row">
+  <div class="form-group form-horizontal consolidatedCheckSection">
+    <div class="col-md-10 text-right">
+      <label class="checkbox-inline">
+        Consolidate PO
+      </label>
+    </div>
+    <div class="col-md-2 consolidateCheckBox">
+      <input type="checkbox" id="consolidateCheck" ng-model="consolidateCheck" ng-click="c.consolidatePO(consolidateCheck)">
+    </div>
+  </div>
+</div>
+
+<div ng-repeat="x in data.itemsArr">
+  <div class="panel panel-default main-panel">
+    <div>
+      <div class="row unapproved" ng-if="x.disabled">
+        Your Request is not yet approved.
+        <hr/>
+      </div>
+      <div class="row"> 
+        <div class="col-md-4">   
+          <div class="row">
+            <div class="col-md-3 img-holder">
+              <img class="icon" style="float: left;" src="images/hardware_icon.png" alt="">
+            </div>
+            <div class="col-md-9">
+              <div class="item-details">
+                <p class="item-name">
+                  {{x.cat_item}}
+                </p> 
+                <p>
+                  {{x.ritmNumber}}
+                </p>
+                <p>
+                  To be Sourced: {{x.quantity}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label>To be Sourced</label>
+          <input type="text" value="{{x.quantity}}" class="ritm-info" readonly="true">
+        </div>
+        <div class="col-md-2">
+          <label>Available</label>
+          <input type="text" value="{{x.stock}}" class="ritm-info" readonly="true" ng-if="x.override == true">
+          <input type="text" value="{{x.stock2}}" class="ritm-info" readonly="true" ng-if="x.override == false">
+        </div>
+        <div class="col-md-4 buttons">
+          <div>
+            <button class="btn btn-primary transfer-btn" 
+                    ng-click="c.addfield('transfer', $index)" 
+                    ng-disabled="x.disabled">
+              Add Transfer Order
+            </button>
+          </div>
+<!--           <div>
+            <button class="btn btn-primary transfer-btn" 
+                    ng-click="c.addfield('assignment', $index)" 
+                    ng-disabled="x.disabled" 
+                    ng-if="!x.software">
+              Add Assignment
+            </button>
+          </div> -->
+          <div>
+            <button class="btn purchase-btn" 
+                    ng-click="c.addfield('purchase', $index)"
+                    ng-disabled="x.disabled || x.noVendor">
+              Add Purchase Order
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--Transfer Ordering Panel --> 
+      <div class="panel panel-default transfer-panel" ng-if="data.showTransferOrder && data.transfers[$index] != '' && x.showTOLabel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>
+                Transfer Order
+              </h4>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary" ng-click="c.overrideCC($index, 'transfer')" ng-disabled="x.override">
+                Override
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row" ng-repeat="item in data.transfers[$index]">
+            <div class="col-md-4">
+              <label>Source Stockroom</label>
+              <div class="select-icon">
+                <span ng-click="c.deleteOrder('transfer', $index, $parent.$index)"><i class="fa fa-minus-circle fa-lg"></i></span>
+                <select placeholder="Select Source Stockroom" 
+                        ng-if="x.override == true"
+                        ng-options="sr.display for sr in x.stockrooms2 | orderBy: 'name'"
+                        ng-model="selectedStockroom3"
+                        ng-change="c.sourceVendorSelect($event, selectedStockroom3.quantity, $index, $parent.$index, $parent.$parent.$index, selectedStockroom3.sys_id, x.override, x.costCenter)"
+                        class="select1">
+                </select>
+                <select placeholder="Select Fake Stockroom" 
+                        ng-options="sr.CCDisplay for sr in x.stockrooms3 | orderBy: 'name'"
+                        ng-if="x.override == false"
+                        ng-model="selectedStockroom3"
+                        ng-change="c.sourceVendorSelect($event, selectedStockroom3.CCquantity, $index, $parent.$index, $parent.$parent.$index, selectedStockroom3.sys_id, x.override, x.costCenter)"
+                        class="select1">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label>In Stock</label>
+              {{data.transfers[$parent.$index][$index].srQuantity}}
+            </div>
+            <div class="col-md-2">
+              <label>Transfer Quantity</label>
+              <input type="text" ng-value="1" class="quantity-input"
+                     ng-model="transferNum"
+                     ng-change="c.transferQuantity($event, $index, $parent.$index, transferNum, x.model, x.modelCategory, x.ritmSysId)"
+                     ng-disabled="!item.picked">
+            </div>
+            <div class="col-md-4">
+              <label>Destination Stockroom</label>
+              <select placeholder="Select Destination Stockroom"  
+                      ng-options="sr.name for sr in x.stockrooms | orderBy: 'name'"
+                      ng-model="selectedStockroom1"
+                      ng-change="c.destinationVendorSelect($event, $index, $parent.$index, selectedStockroom1.sys_id)"
+                      ng-disabled="!item.picked">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Transfer Order Panel Ends-->
+
+      <!--Software Ordering Panel --> 
+      <div class="panel panel-default transfer-panel" 
+           ng-if="data.showAssignmentOrder && data.assignments[$index] != '' && x.showAOLabel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>
+                Assignment Order
+              </h4>
+            </div>
+            <div class="col-md-2"> 
+              <button class="btn btn-primary" 
+                      ng-click="c.overrideCC($index, 'assignment')" 
+                      ng-disabled="x.override">
+                Override
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row" ng-repeat="item in data.assignments[$index]">
+            <div class="col-md-4">
+              <label>License Name</label>
+              <div class="select-icon">
+                <span ng-click="c.deleteOrder('assignment', $index, $parent.$index)"><i class="fa fa-minus-circle fa-lg"></i></span>
+                <select placeholder="Select License" 
+                        ng-if="x.override == true"
+                        ng-options="sw.displayName for sw in x.softwareArray | orderBy: 'displayName'"
+                        ng-model="licenseSelection"
+                        ng-change="c.selectedLicense($event, $index, $parent.$index, $parent.$parent.$index, licenseSelection.displayName, licenseSelection.rights, licenseSelection.license, licenseSelection.request, x.ritmSysId, 'true')"
+                        class="select1">
+                </select>
+                <select placeholder="Select Fake License" 
+                        ng-if="x.override == false"
+                        ng-options="sw.displayNameCC for sw in x.softwareArray | orderBy: 'displayName'"
+                        ng-model="licenseSelection2"
+                        ng-change="c.selectedLicense($event, $index, $parent.$index, $parent.$parent.$index, licenseSelection2.displayName, licenseSelection2.rights, licenseSelection2.license, licenseSelection2.request, x.ritmSysId, 'false')"
+                        class="select1">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <label>Valuation</label>
+              <input type="text" value="N/A" readonly="true">
+            </div>
+            <div class="col-md-1">
+              <label>Available</label>
+              {{data.assignments[$parent.$index][$index].srQuantity}}
+            </div>
+            <div class="col-md-2">
+              <label>Rights</label>
+              <input type="text" value="1" class="rights-input"
+                     ng-model="rightsNum"
+                     ng-change="c.rightsQuantity($event, $index, $parent.$index, rightsNum)"
+                     ng-disabled="!item.picked">
+            </div>
+            <div class="col-md-4">
+              <label>Assigned/Allocated</label>
+              <select placeholder="Select User" 
+                      ng-options="aT.sys_id as aT.name for aT in x.assignedUsers | orderBy: 'name'"
+                      ng-model="item.requestedFor"
+                      ng-change="c.assignedUser($event, $index, $parent.$index, $parent.$parent.$index, item.requestedFor)"
+                      ng-disabled="!item.picked">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Software Panel Ends -->
+
+      <!--Purchase Order Panel-->
+      <div class="panel panel-default" ng-if="data.showPurchaseOrder && data.purchases[$index] != '' && x.showPOLabel">
+        <div class="panel-heading">
+          <h4>
+            Purchase Order
+          </h4>
+        </div>
+        <div class="panel-body">
+          <div class="row" ng-repeat="item in data.purchases[$index]">
+            <div class="col-md-4">
+              <label>Vendor</label>
+              <div class="select-icon">
+                <span ng-click="c.deleteOrder('purchase', $index, $parent.$index)"><i class="fa fa-minus-circle fa-lg"></i></span>
+                <select placeholder="Select Vendor" class="select1"
+                        ng-options="vr.name for vr in x.vendorArray | orderBy: 'name'"
+                        ng-model="vendorId"
+                        ng-change="c.selectedVendor($event, $index, $parent.$index, vendorId.sys_id, x.model, x.request, x.ritmSysId, x.requestedFor, x.openedBy, x.productCatalog, x.partNumber, x.vendorPrice, x.listPrice, x.softwarePartNumber)">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label>Out of Stock</label>
+              <input type="text" value="N/A" readonly="true">
+            </div>
+            <div class="col-md-2">
+              <label>Quantity</label>
+              <input type="text" value="1" class="quantity-input"
+                     ng-model="purchaseNum"
+                     ng-change="c.purchaseQuantity($event, $index, $parent.$index, purchaseNum)"
+                     ng-disabled="!item.picked">
+            </div>
+            <div class="col-md-4">
+              <label>Destination Stockroom</label>
+              <select placeholder="Select Destination Stockroom"
+                      ng-options="sr.name for sr in x.stockrooms | orderBy: 'name'"
+                      ng-model="selectedStockroom1"
+                      ng-change="c.purchaseDestination($event, $index, $parent.$index, selectedStockroom1.sys_id, selectedStockroom1.name)"
+                      ng-disabled="!item.picked">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Purchase Panel Ends -->
+
+    </div>
+  </div>
+</div>
+
+<div>
+  <button ng-click="c.submitForm()" class="btn btn-submit" ng-disabled="!data.submitting">
+    <!--ng-disabled="{{!data.allowSubmit}}"-->
+    Submit
+  </button>
+</div>
