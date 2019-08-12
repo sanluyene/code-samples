@@ -68,10 +68,10 @@ ghost images, laptops, and printers.
 - Reorganized physical media collection.
 
 ###### Publicly Accessible Work and Code References
-- [Pseudopotential Library Website](https://pseudopotentiallibrary.org/) 
-- [Columbia University Library Synchronizer Module GitHub Pages Preview](https://cul.github.io/synchronizer-module/)
-- [Institute of Museum and Library Sciences State Project Reporting (public)](https://imls-spr.imls.gov/Public/Projects) 
-- [Center for Bioenergy Innovation](https://cbi.ornl.gov/)
+- <a href="https://pseudopotentiallibrary.org/" target="_blank">Pseudopotential Library Website</a>
+- <a href="https://cul.github.io/synchronizer-module/" target="_blank">Columbia University Library Synchronizer Module GitHub Pages Preview</a>
+- <a href="https://imls-spr.imls.gov/Public/Projects" target="_blank">Institute of Museum and Library Sciences State Project Reporting (public)</a>
+- <a href="https://cbi.ornl.gov/" target="_blank">Center for Bioenergy Innovation</a>
 
 ### Education
 **University of Florida** - B.A. in East Asian Languages and Literatures, with a focus on Linguistics (2007)
