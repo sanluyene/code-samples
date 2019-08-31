@@ -10,7 +10,7 @@
 - .Net (C#), Angular
 - MSSQL, SQL
 - Javascript, jQuery, gScript
-- HTML5, CSS3/SCSS, PHP
+- HTML5, CSS3/SCSS, PHP, Ruby
 - ServiceNow, Drupal, WordPress, Joomla!
 
 ###### OTHER SOFTWARE
@@ -27,7 +27,7 @@
 
 ### Professional Experience
 
-###### SOLUTIONS ARCHITECT | PHARICODE, LLC. | JUNE 2018 – CURRENT
+###### SERVICE DELIVERY DIRECTOR | PHARICODE, LLC. | JUNE 2018 – CURRENT
 -	**ServiceNow Custom Financial and Human Resource Tracking Portal Application for Johnson&Johnson** - Built custom Service Portal modeling widgets for tracking and trending financial data for a worldwide company managing thousands of employees across multiple regions. Included advanced JavaScript uniquely tailored to the company’s fiscal analytics, while leveraging a strategic table structure to allow for easy modifications or alternative economic functions to be utilized for future growth or other companies. 
 -	**YubiKey Registration Site for ServiceNow** - PHP-based U2F registration application built to support the utilization of Yubico multi-factor authentication devices for ServiceNow. Integrated into the ServiceNow platform through an interchange of Rest API calls, facilitating the exchange of user and certificate data. Included pure HTML and CSS mimicking of a fully-branded ServiceNow portal for a seamless user experience. 
 -	**ServiceNow Defense Manpower Data Center Full Implementation and Development** – Full deployment of the ServiceNow platform for all departments of DMDC. Lead customer workshops for requirements gathering, and subsequent weekly follow-up meetings for deep dives into user stories over a full year. Primary focus on architecting solutions for Human Resources, IT Support Management, and Customer Service Management.
